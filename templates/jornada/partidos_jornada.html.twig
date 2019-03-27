@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="page-title">
+		<h2>Jornada {{ jornada.id }}</h2>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-1">
+				{% if jornada.id > 1 %}
+					<a href="{{ path('partidos_jornada', {'nJornada': (jornada.id - 1)}) }}"><div class="btn btn-info"><<</div></a>
+				{% endif %}
+			</div>
+			<div class="col-xl-10">
+				<table class='table table-striped'>
+					{% for partido in jornada.partidos %}
+						<tr>
+							<th class="text-center escudos-jornada" style='padding-left: 20px;'><img src="{{ asset('img/escudos/' ~ partido.equipoLocal.escudo) }}" alt="{{ partido.equipoLocal.nombre }}"></th>
+							<th>{{ partido.equipoLocal.nombre }}</th>
+							<th class='text-center'>{{ partido.golesLocal }}</th>
+							<th class='text-center'>-</th>
+							<th class='text-center'>{{ partido.golesVisitante }}</th>
+							<th class='text-right' style='padding-right: 20px;'>{{ partido.equipoVisitante.nombre }}</th>
+							<th class="text-center escudos-jornada"><img src="{{ asset('img/escudos/' ~ partido.equipoVisitante.escudo) }}" alt="{{ partido.equipoVisitante.nombre }}"></th>
+							<th class="text-center"><a href="{{ path('partido', {'id': partido.id}) }}">Ver</a></th>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+			<div class="col-xl-1">
+				{% if jornada.id < 38 %}
+					<a href="{{ path('partidos_jornada', {'nJornada': (jornada.id + 1)}) }}"><div class="btn btn-info">>></div></a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

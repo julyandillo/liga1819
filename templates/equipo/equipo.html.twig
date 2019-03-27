@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="container-fluid">		
+		<div class="container col-xs-12">
+			<div class="team-tittle">
+				<h2>{{ equipo.nombreClub }}</h2>
+			</div>
+			<div class="team-data">
+				<div class="team-data-header">
+					<img src="{{ asset('img/escudos/' ~ equipo.escudo) }}" alt="{{ equipo.nombre }}">
+					<ul>
+						<li>Año de fundación: {{ equipo.fundacion }}</li>
+						<li>Dirección social: {{ equipo.direccion }}</li>
+						<li>Entrenador: {{ equipo.entrenador }}</li>
+						<li>Estadio: {{ equipo.estadio.nombre }} ({{ equipo.estadio.capacidad }} espectadores)</li>
+					</ul>
+				</div>
+				<div class="team-data-content">
+                    <div id="estadisticas" class="row col-12">
+						<div id="jugados"></div>
+						<div id="ganados"></div>
+						<div id="empatados"></div>
+						<div id="perdidos"></div>
+						<div id="puntos"></div>
+						<div id="golesFavor"></div>
+						<div id="golesContra"></div>
+						<div id="tarjetas"></div>
+					</div>
+					<h3>Plantilla <span class="team-age text-muted">({{ equipo.mediaEdad  }} años)</span></h3>
+					<h5>Porteros</h5>
+					<div class="team-data-players">
+						{% for jugador in equipo.jugadores %}
+							{% if jugador.posicion == 'POR' %}
+								<div class="team-data-player">
+									<span class="name">{{ jugador.nombre }} </span>
+									<span class="age">{{ jugador.edad }} años</span>
+									{% if jugador.goles|length > 0 %}
+										<span class="player-goals">{{ jugador.goles|length }} goles</span>
+									{% endif %}
+									{% if jugador.tarjetas|length > 0 %}
+										<span class="player-cards">{{ jugador.tarjetas|length }} tarjetas</span>
+									{% endif %}
+								</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<h5>Defensas</h5>
+					<div class="team-data-players">
+						{% for jugador in equipo.jugadores %}
+							{% if jugador.posicion == 'DEF' %}
+								<div class="team-data-player">
+									<span class="name">{{ jugador.nombre }} </span>
+									<span class="age">{{ jugador.edad }} años</span>
+									{% if jugador.goles|length > 0 %}
+										<span class="player-goals">{{ jugador.goles|length }} goles</span>
+									{% endif %}
+									{% if jugador.tarjetas|length > 0 %}
+										<span class="player-cards">{{ jugador.tarjetas|length }} tarjetas</span>
+									{% endif %}
+								</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<h5>Centrocampistas</h5>
+					<div class="team-data-players">
+						{% for jugador in equipo.jugadores %}
+							{% if jugador.posicion == 'MED' %}
+								<div class="team-data-player">
+									<span class="name">{{ jugador.nombre }} </span>
+									<span class="age">{{ jugador.edad }} años</span>
+									{% if jugador.goles|length > 0 %}
+										<span class="player-goals">{{ jugador.goles|length }} goles</span>
+									{% endif %}
+									{% if jugador.tarjetas|length > 0 %}
+										<span class="player-cards">{{ jugador.tarjetas|length }} tarjetas</span>
+									{% endif %}
+								</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<h5>Delanteros</h5>
+					<div class="team-data-players">
+						{% for jugador in equipo.jugadores %}
+							{% if jugador.posicion == 'DEL' %}
+								<div class="team-data-player">
+									<span class="name">{{ jugador.nombre }} </span>
+									<span class="age">{{ jugador.edad }} años</span>
+									{% if jugador.goles|length > 0 %}
+										<span class="player-goals">{{ jugador.goles|length }} goles</span>
+									{% endif %}
+									{% if jugador.tarjetas|length > 0 %}
+										<span class="player-cards">{{ jugador.tarjetas|length }} tarjetas</span>
+									{% endif %}
+								</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        {{ gc_draw([jugados, ganados, empatados, perdidos, puntos, golesFavor, golesContra, tarjetas],
+			['jugados', 'ganados', 'empatados', 'perdidos', 'puntos', 'golesFavor', 'golesContra', 'tarjetas']) }}
+    </script>
+{% endblock %}

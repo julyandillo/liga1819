@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="text-center">
+			<h2>Equipos</h2>
+		</div>
+		<div class="container col-xs-12 equipos">
+			{% for equipo in equipos %}
+				<a class="equipo-link-a" href="{{ path('equipo', {'id': equipo.id}) }}">
+					<div class="equipo-link">
+						<img src="{{ asset('img/escudos/' ~ equipo.escudo) }}" alt="{{ equipo.nombre }}">
+						<span class="equipo-link-nombre">{{ equipo.nombre }}</span>
+					</div>
+				</a>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

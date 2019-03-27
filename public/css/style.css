@@ -1,0 +1,157 @@
+h2 {
+    text-align: center;
+    color: #185436;
+    font-weight: 700;
+}
+a:hover {
+    text-decoration: none;
+}
+
+.page-title {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.container-fluid {
+    padding: 15px;
+}
+.equipo-link {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px;
+    width: 200px;
+    min-height: 246px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    margin: 10px;
+}
+.equipo-link:hover {
+    background-color: #fafafa;
+}
+.equipo-link img {
+    max-height: 150px;
+    width: auto;
+}
+.equipos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 15px;
+}
+.equipo-link-nombre {
+    margin-top: 10px;
+    font-weight: 400;
+}
+.team-data-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.team-data-header img {
+    max-height: 250px;
+}
+.team-data-players {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.team-data-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    width: 180px;
+    margin: 10px;
+    min-height: 180px;
+}
+.team-data-player:hover {
+    background-color: #fafafa;
+}
+.team-age {
+	font-size: 0.6em;
+}
+.escudos-jornada {
+	max-width: 40px;
+}
+.escudo-partido {
+    width: 100px;
+}
+.escudo-partido img{
+    max-height: 80px;
+}
+.escudos-jornada img{
+	height: 30px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.clasificacion {
+    width: 70%;
+    padding-top: 30px;
+    margin: 0 auto;
+}
+.champions {
+    background-color: #80bdff;
+}
+.uefa {
+    background-color: sandybrown;
+}
+.descenso {
+    background-color: #e4606d;
+}
+
+.partido {
+    margin-top: 50px;
+}
+.header-partido {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.marcador {
+    border: 1px solid #eee;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.marcador > :first-child {
+    border-right: 1px solid #eee;
+}
+.content-partido {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+.content-local {
+    padding-right: 50px;
+}
+img.gol {
+    width: 25px;
+}
+img.tarjeta-amarilla, img.tarjeta-roja {
+    height: 25px;
+}
+.gris {
+    background-color: #f8f8f8;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+.evento {
+    padding: 1px;
+}
+
+.player-goals, .player-cards {
+    font-size: .8rem;
+}
+
+#estadisticas {
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}

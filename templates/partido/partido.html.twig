@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="partido container">
+        <div class="header-partido row text-center align-items-center">
+            <div class="col-1 escudo-partido"><img src="{{ asset('img/escudos/' ~ partido.equipoLocal.escudo) }}" alt="{{ partido.equipoLocal.nombre }}"></div>
+            <div class="col-4">{{ partido.equipoLocal.nombre }}</div>
+            <div class="col-2 row text-center align-items-center marcador">
+                <div class="col">{{ partido.golesLocal }}</div>
+                <div class="col">{{ partido.golesVisitante }}</div>
+            </div>
+            <div class="col-4">{{ partido.equipoVisitante.nombre }}</div>
+            <div class="col-1 escudo-partido"><img src="{{ asset('img/escudos/' ~ partido.equipoVisitante.escudo) }}" alt="{{ partido.equipoVisitante.nombre }}"></div>
+        </div>
+        <div class="content-partido row align-items-start">
+            <div class="content-local col">
+                {% for evento in partido.eventosLocal %}
+                    <div class="evento col-12 align-items-center text-right {{ cycle(['', 'gris'], loop.index0) }}">
+                    {% if evento['tipo'] == 'gol' %}
+                            ({{ evento['data'].minuto }}')
+                            {% if evento['data'].penalti %} (p) {% endif %}
+                            {% if evento['data'].propiaMeta %} (pp) {% endif %}
+                            {{ evento['data'].jugador.nombre }}
+                            <img class="gol" src="{{ asset('img/balon.png') }}" alt="gol">
+                    {% else %}
+                            ({{ evento['data'].minuto }}') {{ evento['data'].jugador.nombre }}
+                            {% if evento['data'].tipo == 1 %}
+                                <img class="tarjeta-amarilla" src="{{ asset('img/amarilla.png') }}" alt="tarjeta amarilla">
+                            {% else %}
+                                <img class="tarjeta-roja" src="{{ asset('img/roja.png') }}" alt="tarjeta roja">
+                            {% endif %}
+                    {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="content-visitante col">
+                {% for evento in partido.eventosVisitante %}
+                    <div class="evento col-12 align-items-center {{ cycle(['', 'gris'], loop.index0) }}">
+                    {% if evento['tipo'] == 'gol' %}
+                            <img class="gol" src="{{ asset('img/balon.png') }}" alt="gol">
+                            ({{ evento['data'].minuto }}')
+                            {% if evento['data'].penalti %} (p) {% endif %}
+                            {% if evento['data'].propiaMeta %} (pp) {% endif %}
+                            {{ evento['data'].jugador.nombre }}
+                    {% else %}
+                            {% if evento['data'].tipo == 1 %}
+                                <img class="tarjeta-amarilla" src="{{ asset('img/amarilla.png') }}" alt="tarjeta amarilla">
+                            {% else %}
+                                <img class="tarjeta-roja" src="{{ asset('img/roja.png') }}" alt="tarjeta roja">
+                            {% endif %}
+                            ({{ evento['data'].minuto }}') {{ evento['data'].jugador.nombre }}
+                    {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
